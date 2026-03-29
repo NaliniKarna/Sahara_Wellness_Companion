@@ -1,35 +1,75 @@
-**Sahara - AI Career & Wellness Companion**
-“From confusion to clarity - your career, your path.”
+Sahara – AI Career & Wellness Companion
+
+“From confusion to clarity — your career, your path.”
 
 Sahara is a full-stack web application designed to help students and professionals navigate their career journey while maintaining mental health and wellbeing.
+
 It combines AI-driven career guidance, real-world insights, and wellness support into one unified platform.
 
-
 🚀 Features
-	🤖AI Career Recommendations
-Personalized career paths based on skills, interests, and goals 
+🤖 AI Career Recommendations
+
+Personalized career paths based on skills, interests, and goals
+
 🎯 Skill GPS
-Track skill gaps and milestones toward your target career 
+
+Track skill gaps and milestones toward your target career
+
 📅 Weekly Action Plan
-AI-generated tasks balancing learning and mental wellness 
+
+AI-generated tasks balancing learning and mental wellness
+
 💬 AI Mentor Chat
-Conversational AI for career guidance, productivity, and stress support 
+
+Conversational AI for career guidance, productivity, and stress support
+
 🌍 Reality Simulator
-“Day in the life” preview of careers with real expectations 
+
+“Day in the life” preview of careers with real expectations
+
 📊 Probability Calculator
-Success likelihood with improvement suggestions 
+
+Estimate success likelihood with improvement suggestions
+
 📈 Job Market Intelligence
-Insights into demand, skills, and salary trends 
+
+Insights into market demand, skills, and salary trends
+
 🧠 Wellness Center
-Daily mood, stress, and energy tracking with AI insights 
+
+Track daily mood, stress, and energy levels with AI insights
+
 👥 Community Support
-Peer feed with posts, likes, and shared experiences 
+
+Peer community with posts, likes, and shared experiences
+
 ⏱️ Focus Coach
-Pomodoro timer + anti-procrastination task manager 
+
+Pomodoro timer + anti-procrastination task manager
+
 🔍 Reality Check
-Debunks career myths with evidence-based insights 
+
+Debunks career myths with evidence-based insights
+
 ⚙️ Settings & Personalization
-Profile, goals, notifications, and privacy controls 
+
+Manage profile, goals, notifications, and privacy
+
+🧰 Tech Stack
+Frontend (artifacts/sahara)
+React + TypeScript
+Vite
+Tailwind CSS v4
+Framer Motion
+Wouter (routing)
+TanStack Query
+Recharts
+Backend (artifacts/api-server)
+Node.js + Express
+TypeScript
+PostgreSQL (Replit DB)
+Drizzle ORM
+OpenAI-compatible API (Replit AI)
 
 Tech Stack
 Frontend (artifacts/sahara)

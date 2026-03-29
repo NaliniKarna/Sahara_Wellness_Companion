@@ -128,7 +128,7 @@ Secure cookie handling
 User-specific data protection
 🌍 Vision
 
-Sahara aims to become a holistic career + mental wellness platform, helping users:
+Sahara aims to become a holistic career, mental wellness platform helping users:
 
 Make better career decisions
 Stay consistent and focused
@@ -136,6 +136,7 @@ Avoid burnout and confusion
 Grow with clarity and confidence
 
 👥 Team 1
+
 Aishwarya Sah
 Nalini Karna
 Sabina Sangraula

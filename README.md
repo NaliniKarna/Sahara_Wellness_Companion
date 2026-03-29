@@ -1,4 +1,4 @@
-Sahara – AI Career & Wellness Companion
+**Sahara – AI Career & Wellness Companion**
 
 “From confusion to clarity — your career, your path.”
 
@@ -71,35 +71,22 @@ PostgreSQL (Replit DB)
 Drizzle ORM
 OpenAI-compatible API (Replit AI)
 
-Tech Stack
-Frontend (artifacts/sahara)
-•	React + TypeScript 
-•	Vite 
-•	Tailwind CSS v4 
-•	Framer Motion 
-•	Wouter (routing) 
-•	TanStack Query 
-•	Recharts 
-Backend (artifacts/api-server)
-•	Node.js + Express 
-•	TypeScript 
-•	PostgreSQL (Replit DB) 
-•	Drizzle ORM 
-•	OpenAI-compatible API (Replit AI) 
 
-Getting Started
+⚙️ Getting Started
+
 This project uses pnpm workspaces.
-Manual Start
-# Start API Server
+Install dependencies
+pnpm install
+Start the backend
 pnpm --filter @workspace/api-server run dev
-
-# Start Frontend
+Start the frontend
 pnpm --filter @workspace/sahara run dev
 
-Environment Variables
+🔑 Environment Variables
 Variable	Description
 DATABASE_URL	PostgreSQL connection string
 SESSION_SECRET	Secret for session authentication
+
 
 📁 Project Structure
 artifacts/
@@ -135,14 +122,27 @@ Route	Page
 /mental-health	Mental Health Support
 /settings	Profile & Preferences
 
-Authentication
-•	Session-based authentication 
-•	Secure cookie handling 
-•	User-specific data protection 
+🔐 Authentication
+Session-based authentication
+Secure cookie handling
+User-specific data protection
+🌍 Vision
 
-Vision
 Sahara aims to become a holistic career + mental wellness platform, helping users:
-•	Make better career decisions 
-•	Stay consistent and focused 
-•	Avoid burnout and confusion 
-•	Grow with clarity and confidence
+
+Make better career decisions
+Stay consistent and focused
+Avoid burnout and confusion
+Grow with clarity and confidence
+
+👥 Team 1
+Aishwarya Sah
+Nalini Karna
+Sabina Sangraula
+
+📂 GitHub Repository
+
+Source code and documentation are available here:
+https://github.com/NaliniKarna/Sahara_Wellness_Companion
+
+

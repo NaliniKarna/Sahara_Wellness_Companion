@@ -6,29 +6,29 @@ It combines AI-driven career guidance, real-world insights, and wellness support
 
 
 🚀 Features
-•	🤖AI Career Recommendations
+	🤖AI Career Recommendations
 Personalized career paths based on skills, interests, and goals 
-•	🎯 Skill GPS
+🎯 Skill GPS
 Track skill gaps and milestones toward your target career 
-•	📅 Weekly Action Plan
+📅 Weekly Action Plan
 AI-generated tasks balancing learning and mental wellness 
-•	💬 AI Mentor Chat
+💬 AI Mentor Chat
 Conversational AI for career guidance, productivity, and stress support 
-•	🌍 Reality Simulator
+🌍 Reality Simulator
 “Day in the life” preview of careers with real expectations 
-•	📊 Probability Calculator
+📊 Probability Calculator
 Success likelihood with improvement suggestions 
-•	📈 Job Market Intelligence
+📈 Job Market Intelligence
 Insights into demand, skills, and salary trends 
-•	🧠 Wellness Center
+🧠 Wellness Center
 Daily mood, stress, and energy tracking with AI insights 
-•	👥 Community Support
+👥 Community Support
 Peer feed with posts, likes, and shared experiences 
-•	⏱️ Focus Coach
+⏱️ Focus Coach
 Pomodoro timer + anti-procrastination task manager 
-•	🔍 Reality Check
+🔍 Reality Check
 Debunks career myths with evidence-based insights 
-•	⚙️ Settings & Personalization
+⚙️ Settings & Personalization
 Profile, goals, notifications, and privacy controls 
 
 Tech Stack

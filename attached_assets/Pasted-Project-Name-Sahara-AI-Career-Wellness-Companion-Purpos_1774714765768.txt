@@ -1,0 +1,77 @@
+Project Name: Sahara — AI Career & Wellness Companion
+Purpose: Help students and professionals gain career clarity, build skills, and maintain mental health.
+
+Theme / Style:
+
+Sidebar layout (left navigation, main content right)
+Calm, light-blue color palette (#D0E7FF, #B0D4FF)
+Friendly, modern UI with clean typography (Poppins / Inter)
+Responsive for desktop and mobile
+
+Pages / Sections:
+
+Landing Page
+Tagline: “From confusion to clarity — your career, your path.”
+Feature overview cards
+CTA button: “Get Started”
+Sign Up / Login Page
+Email / username + password
+Option to continue as guest for quick demo
+Smart Onboarding (5-step profile builder)
+Collect: Interests, skills, education, status, weekly learning time, goals
+Optional: energy levels, stress, focus
+Output: Personalized career + wellness profile
+Dashboard
+Overview of career goals, skill progress, weekly plan
+Wellness check (stress, energy, focus)
+Visual charts and progress bars
+AI Career Recommendations
+Top 2 career paths
+Role title, why it fits, difficulty, required skills, market demand
+Reality Simulator button (day-in-the-life, effort, challenges)
+Reality Simulator (Signature Feature)
+Detailed daily tasks, work environment, effort level, timeline, challenges
+Helps prevent burnout from unrealistic expectations
+Career Probability Engine
+Success probability (visual gauge)
+Required effort, suggested learning time
+Career GPS (Skill Gap Tracker)
+Current skills → Target career
+Milestones, progress percentage, missing skills
+Weekly Action Plan
+Micro-tasks with wellness breaks
+Adaptive timeline based on completion
+Checklist UI for easy tracking
+Adaptive Roadmap System
+Updates automatically as tasks completed
+Suggests next steps and focus/rest adjustments
+Brain Fog & Focus Coach
+Monitors energy and task load
+Suggests micro-focus sessions or short breaks
+Anti-Procrastination System
+Breaks tasks into atomic steps
+Smart deadlines and commitment tracker
+Expectation vs Reality Analyzer
+Myth debunker for common career misconceptions
+Mental Health & Therapy Support
+Mood / stress tracker
+Guided micro-therapy exercises (journaling, mindfulness)
+Optional therapy referrals
+AI Mentor Chat
+Ask questions about career, productivity, stress, or focus
+Context-aware responses
+Job Market Intelligence
+Job demand trends, skills needed, salary ranges
+Portfolio Builder & Learning Resources
+Suggests projects to build
+Curated courses, tutorials, documentation
+
+Behavior / Functionality Requirements:
+
+Sidebar is fully functional and collapsible
+All pages load dynamically with content area updates
+Weekly plans and skill trackers are interactive and persistent
+AI Mentor Chat fully functional with AI responses
+Mental health features actively adjust recommendations based on stress/focus input
+Tasks, progress, and roadmap updates are real-time
+Landing page should impress visually and guide users to onboarding

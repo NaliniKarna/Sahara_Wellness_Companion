@@ -1,0 +1,916 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: Sahara AI Career & Wellness Companion API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: users
+    description: User management
+  - name: onboarding
+    description: Onboarding profile
+  - name: career
+    description: Career recommendations and analysis
+  - name: skills
+    description: Skill gap tracking
+  - name: wellness
+    description: Wellness and mental health
+  - name: tasks
+    description: Weekly action plans and tasks
+  - name: chat
+    description: AI mentor chat
+  - name: jobmarket
+    description: Job market intelligence
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /users/profile:
+    get:
+      operationId: getProfile
+      tags: [users]
+      summary: Get current user profile
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "404":
+          description: Profile not found
+    put:
+      operationId: updateProfile
+      tags: [users]
+      summary: Update user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProfileRequest"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+
+  /onboarding:
+    post:
+      operationId: submitOnboarding
+      tags: [onboarding]
+      summary: Submit onboarding data and generate profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OnboardingData"
+      responses:
+        "201":
+          description: Onboarding complete
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+
+  /career/recommendations:
+    get:
+      operationId: getCareerRecommendations
+      tags: [career]
+      summary: Get AI career recommendations
+      responses:
+        "200":
+          description: Career recommendations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerRecommendationsResponse"
+
+  /career/reality-simulator/{careerId}:
+    get:
+      operationId: getRealitySimulator
+      tags: [career]
+      summary: Get day-in-the-life reality simulation for a career
+      parameters:
+        - name: careerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Reality simulation data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RealitySimulatorResponse"
+
+  /career/probability/{careerId}:
+    get:
+      operationId: getCareerProbability
+      tags: [career]
+      summary: Get career success probability
+      parameters:
+        - name: careerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Career probability
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerProbabilityResponse"
+
+  /skills/gaps:
+    get:
+      operationId: getSkillGaps
+      tags: [skills]
+      summary: Get skill gaps for target career
+      responses:
+        "200":
+          description: Skill gap analysis
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SkillGapsResponse"
+
+  /skills/update:
+    post:
+      operationId: updateSkillProgress
+      tags: [skills]
+      summary: Update skill progress
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSkillProgressRequest"
+      responses:
+        "200":
+          description: Updated skill
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Skill"
+
+  /wellness/checkin:
+    get:
+      operationId: getWellnessCheckin
+      tags: [wellness]
+      summary: Get latest wellness check-in
+      responses:
+        "200":
+          description: Wellness data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WellnessData"
+    post:
+      operationId: submitWellnessCheckin
+      tags: [wellness]
+      summary: Submit wellness check-in
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WellnessCheckinRequest"
+      responses:
+        "200":
+          description: Wellness response with recommendations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WellnessCheckinResponse"
+
+  /wellness/mood-history:
+    get:
+      operationId: getMoodHistory
+      tags: [wellness]
+      summary: Get mood history
+      responses:
+        "200":
+          description: Mood history
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MoodHistoryResponse"
+
+  /tasks/weekly-plan:
+    get:
+      operationId: getWeeklyPlan
+      tags: [tasks]
+      summary: Get weekly action plan
+      responses:
+        "200":
+          description: Weekly plan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WeeklyPlanResponse"
+
+  /tasks/{taskId}/complete:
+    post:
+      operationId: completeTask
+      tags: [tasks]
+      summary: Mark a task as complete
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+
+  /tasks/{taskId}/uncomplete:
+    post:
+      operationId: uncompleteTask
+      tags: [tasks]
+      summary: Mark a task as incomplete
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+
+  /chat/message:
+    post:
+      operationId: sendChatMessage
+      tags: [chat]
+      summary: Send a message to the AI mentor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatMessageRequest"
+      responses:
+        "200":
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatMessageResponse"
+
+  /chat/history:
+    get:
+      operationId: getChatHistory
+      tags: [chat]
+      summary: Get chat history
+      responses:
+        "200":
+          description: Chat messages
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatHistoryResponse"
+
+  /jobmarket:
+    get:
+      operationId: getJobMarket
+      tags: [jobmarket]
+      summary: Get job market intelligence
+      responses:
+        "200":
+          description: Job market data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobMarketResponse"
+
+  /dashboard:
+    get:
+      operationId: getDashboard
+      tags: [users]
+      summary: Get dashboard overview data
+      responses:
+        "200":
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardResponse"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        sessionId:
+          type: string
+        name:
+          type: string
+        interests:
+          type: array
+          items:
+            type: string
+        skills:
+          type: array
+          items:
+            type: string
+        education:
+          type: string
+        status:
+          type: string
+        weeklyLearningHours:
+          type: number
+        goals:
+          type: string
+        energyLevel:
+          type: number
+        stressLevel:
+          type: number
+        focusLevel:
+          type: number
+        targetCareer:
+          type: string
+        onboardingComplete:
+          type: boolean
+        createdAt:
+          type: string
+      required:
+        - id
+        - sessionId
+        - onboardingComplete
+
+    UpdateProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        interests:
+          type: array
+          items:
+            type: string
+        skills:
+          type: array
+          items:
+            type: string
+        education:
+          type: string
+        status:
+          type: string
+        weeklyLearningHours:
+          type: number
+        goals:
+          type: string
+        energyLevel:
+          type: number
+        stressLevel:
+          type: number
+        focusLevel:
+          type: number
+        targetCareer:
+          type: string
+
+    OnboardingData:
+      type: object
+      properties:
+        name:
+          type: string
+        interests:
+          type: array
+          items:
+            type: string
+        skills:
+          type: array
+          items:
+            type: string
+        education:
+          type: string
+        status:
+          type: string
+        weeklyLearningHours:
+          type: number
+        goals:
+          type: string
+        energyLevel:
+          type: number
+        stressLevel:
+          type: number
+        focusLevel:
+          type: number
+      required:
+        - interests
+        - skills
+        - education
+        - status
+        - weeklyLearningHours
+        - goals
+
+    CareerRecommendation:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        whyItFits:
+          type: string
+        difficulty:
+          type: string
+        requiredSkills:
+          type: array
+          items:
+            type: string
+        marketDemand:
+          type: string
+        salaryRange:
+          type: string
+        matchScore:
+          type: number
+      required:
+        - id
+        - title
+        - whyItFits
+        - difficulty
+        - requiredSkills
+        - marketDemand
+        - salaryRange
+        - matchScore
+
+    CareerRecommendationsResponse:
+      type: object
+      properties:
+        recommendations:
+          type: array
+          items:
+            $ref: "#/components/schemas/CareerRecommendation"
+      required:
+        - recommendations
+
+    RealitySimulatorResponse:
+      type: object
+      properties:
+        careerId:
+          type: string
+        careerTitle:
+          type: string
+        dailyTasks:
+          type: array
+          items:
+            type: string
+        workEnvironment:
+          type: string
+        effortLevel:
+          type: string
+        timeline:
+          type: string
+        challenges:
+          type: array
+          items:
+            type: string
+        typicalDay:
+          type: string
+        salaryJourney:
+          type: string
+        burnoutRisk:
+          type: string
+      required:
+        - careerId
+        - careerTitle
+        - dailyTasks
+        - workEnvironment
+        - effortLevel
+        - timeline
+        - challenges
+        - typicalDay
+        - salaryJourney
+        - burnoutRisk
+
+    CareerProbabilityResponse:
+      type: object
+      properties:
+        careerId:
+          type: string
+        careerTitle:
+          type: string
+        successProbability:
+          type: number
+        requiredEffort:
+          type: string
+        suggestedLearningTime:
+          type: string
+        keyFactors:
+          type: array
+          items:
+            type: string
+        improvementTips:
+          type: array
+          items:
+            type: string
+      required:
+        - careerId
+        - careerTitle
+        - successProbability
+        - requiredEffort
+        - suggestedLearningTime
+        - keyFactors
+        - improvementTips
+
+    Skill:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        currentLevel:
+          type: number
+        targetLevel:
+          type: number
+        category:
+          type: string
+        resources:
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - name
+        - currentLevel
+        - targetLevel
+        - category
+        - resources
+
+    SkillGapsResponse:
+      type: object
+      properties:
+        targetCareer:
+          type: string
+        overallProgress:
+          type: number
+        skills:
+          type: array
+          items:
+            $ref: "#/components/schemas/Skill"
+        milestones:
+          type: array
+          items:
+            $ref: "#/components/schemas/Milestone"
+        missingSkills:
+          type: array
+          items:
+            type: string
+      required:
+        - targetCareer
+        - overallProgress
+        - skills
+        - milestones
+        - missingSkills
+
+    Milestone:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        completed:
+          type: boolean
+        targetDate:
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - completed
+
+    UpdateSkillProgressRequest:
+      type: object
+      properties:
+        skillId:
+          type: string
+        currentLevel:
+          type: number
+      required:
+        - skillId
+        - currentLevel
+
+    WellnessData:
+      type: object
+      properties:
+        stressLevel:
+          type: number
+        energyLevel:
+          type: number
+        focusLevel:
+          type: number
+        moodScore:
+          type: number
+        lastCheckin:
+          type: string
+        recommendations:
+          type: array
+          items:
+            type: string
+      required:
+        - stressLevel
+        - energyLevel
+        - focusLevel
+        - moodScore
+
+    WellnessCheckinRequest:
+      type: object
+      properties:
+        stressLevel:
+          type: number
+        energyLevel:
+          type: number
+        focusLevel:
+          type: number
+        moodScore:
+          type: number
+        notes:
+          type: string
+      required:
+        - stressLevel
+        - energyLevel
+        - focusLevel
+        - moodScore
+
+    WellnessCheckinResponse:
+      type: object
+      properties:
+        wellness:
+          $ref: "#/components/schemas/WellnessData"
+        recommendations:
+          type: array
+          items:
+            type: string
+        exercises:
+          type: array
+          items:
+            $ref: "#/components/schemas/WellnessExercise"
+      required:
+        - wellness
+        - recommendations
+        - exercises
+
+    WellnessExercise:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        duration:
+          type: string
+        type:
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - duration
+        - type
+
+    MoodEntry:
+      type: object
+      properties:
+        date:
+          type: string
+        moodScore:
+          type: number
+        stressLevel:
+          type: number
+        energyLevel:
+          type: number
+      required:
+        - date
+        - moodScore
+        - stressLevel
+        - energyLevel
+
+    MoodHistoryResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/MoodEntry"
+      required:
+        - entries
+
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        priority:
+          type: string
+        completed:
+          type: boolean
+        dueDate:
+          type: string
+        estimatedMinutes:
+          type: number
+        isWellnessBreak:
+          type: boolean
+      required:
+        - id
+        - title
+        - description
+        - category
+        - priority
+        - completed
+        - estimatedMinutes
+        - isWellnessBreak
+
+    WeeklyPlanResponse:
+      type: object
+      properties:
+        weekStart:
+          type: string
+        weekEnd:
+          type: string
+        completionPercentage:
+          type: number
+        tasks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Task"
+        focusTip:
+          type: string
+        adaptiveNote:
+          type: string
+      required:
+        - weekStart
+        - weekEnd
+        - completionPercentage
+        - tasks
+        - focusTip
+        - adaptiveNote
+
+    ChatMessageRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        sessionId:
+          type: string
+      required:
+        - message
+
+    ChatMessage:
+      type: object
+      properties:
+        id:
+          type: string
+        role:
+          type: string
+        content:
+          type: string
+        timestamp:
+          type: string
+      required:
+        - id
+        - role
+        - content
+        - timestamp
+
+    ChatMessageResponse:
+      type: object
+      properties:
+        message:
+          $ref: "#/components/schemas/ChatMessage"
+        suggestions:
+          type: array
+          items:
+            type: string
+      required:
+        - message
+        - suggestions
+
+    ChatHistoryResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatMessage"
+      required:
+        - messages
+
+    JobRole:
+      type: object
+      properties:
+        title:
+          type: string
+        demandLevel:
+          type: string
+        avgSalary:
+          type: string
+        growthRate:
+          type: string
+        topSkills:
+          type: array
+          items:
+            type: string
+      required:
+        - title
+        - demandLevel
+        - avgSalary
+        - growthRate
+        - topSkills
+
+    JobMarketResponse:
+      type: object
+      properties:
+        trending:
+          type: array
+          items:
+            $ref: "#/components/schemas/JobRole"
+        insights:
+          type: array
+          items:
+            type: string
+        topIndustries:
+          type: array
+          items:
+            type: string
+      required:
+        - trending
+        - insights
+        - topIndustries
+
+    DashboardResponse:
+      type: object
+      properties:
+        profile:
+          $ref: "#/components/schemas/UserProfile"
+        careerProgress:
+          type: number
+        weeklyTasksCompleted:
+          type: number
+        weeklyTasksTotal:
+          type: number
+        wellness:
+          $ref: "#/components/schemas/WellnessData"
+        upcomingTasks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Task"
+        streakDays:
+          type: number
+      required:
+        - careerProgress
+        - weeklyTasksCompleted
+        - weeklyTasksTotal
+        - wellness
+        - upcomingTasks
+        - streakDays

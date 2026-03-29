@@ -1,6 +1,6 @@
 **Sahara – AI Career & Wellness Companion**
-
 “From confusion to clarity — your career, your path.”
+![Sahara Logo](logo-sahara.jpeg)
 
 Sahara is a full-stack web application designed to help students and professionals navigate their career journey while maintaining mental health and wellbeing.
 
